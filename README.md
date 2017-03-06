@@ -1,1 +1,3 @@
-# Project-1---Funda
+# Project 1 - Funda
+
+Documentation will follow soon.
