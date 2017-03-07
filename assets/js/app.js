@@ -70,6 +70,12 @@ TODO: - Show street and cityname
           href: function() {
             return `#detail/${this.Id}`;
           }
+        },
+        list_image: {
+          src: function() {
+            console.log(this);
+            return `${this.FotoLarge}`;
+          }
         }
       }
       this.render(data, attributes)
