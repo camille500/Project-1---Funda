@@ -1,14 +1,11 @@
 /*
 TODO: - Show street and cityname
-      - Make a list view from all the houses near users location
       - Create filters and sort options
       - Detailview for every house
       - Suggestions
-      - Routes
       - Styling
       - Modular?
 */
-
 {
   'use strict';
 
@@ -71,16 +68,17 @@ TODO: - Show street and cityname
       let attributes = {
         house_id: {
           href: function() {
-            console.log(this);
             return `#detail/${this.Id}`;
           }
         }
       }
-      console.log(attributes);
       this.render(data, attributes)
     },
+    filter(data) {
+
+    },
     render(data, attributes) {
-      Transparency.render(document.querySelector('section'), data.Objects, attributes);
+      Transparency.render(elements.listSection, data.Objects, attributes);
     }
   };
 
@@ -107,7 +105,7 @@ TODO: - Show street and cityname
   ------------------------------------------------  */
   routie({
     '': () => {
-      console.log('home');
+
     },
     'detail/:id': (id) => {
       houseDetail.buildUrl(id);
