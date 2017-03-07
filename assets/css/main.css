@@ -1,0 +1,23 @@
+header {
+  background-color: #F7A100;
+  height: 5em;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+h1 {
+  margin-left: .5em;
+}
+
+section > div {
+  display: block;
+  width: 30%;
+  padding: 1em;
+  margin-top: 2em;
+  background-color: #f0eff1;
+}
