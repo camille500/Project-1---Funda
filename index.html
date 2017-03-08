@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="nl">
 
-  <head>
+<head>
 
     <meta charset="utf-8" />
     <title>Fundaa Project</title>
@@ -13,40 +13,81 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body>
+<body>
 
     <header>
-      <a href="/funda"><img src="./assets/images/funda-logo.svg" alt="Logo van Funda.nl" class="logo"/></a>
-      <nav>
-      </nav>
+        <a href="/funda"><img src="./assets/images/funda-logo.svg" alt="Logo van Funda.nl" class="logo" /></a>
+        <nav>
+        </nav>
     </header>
 
+    <h1 class="locationTitle"></h1>
 
-    <section class="listSection">
-      <div>
-        <img class="list_image" />
-        <div class="info_wrapper">
-          <p><a class="house_id"><span class="Adres"></span></a></p>
-          <p><span class="Postcode"></span>, <span class="Woonplaats"></span></p>
-          <p><strong>Koopprijs: </strong><span class="Koopprijs"></span></p>
-          <p><strong>Aangeboden sinds: </strong><span class="AangebodenSindsTekst"></span></p>
-          <p><strong>Kamers: </strong><span class="AantalKamers"></span></p>
-          <p><strong>Makelaar: </strong><span class="MakelaarNaam"></span></p>
+    <section class="listSection hidden">
+        <div>
+            <img class="list_image" />
+            <div class="info_wrapper">
+                <p><a class="house_id"><span class="Adres"></span></a></p>
+                <p><span class="Postcode"></span>, <span class="Woonplaats"></span></p>
+            </div>
         </div>
-      </div>
     </section>
 
     <section class="detailSection hidden">
-      <img class="detail_image" />
-      <span class="Adres"></span>
-      <p><span class="VolledigeOmschrijving"></span></p>
-      <span class="Kenmerken">
-        <ul class="Kenmerken">
-          <li></li>
-        </ul>
-      </span>
+        <img class="detail_image" />
+        <!-- <p><span class="VolledigeOmschrijving"></span></p> -->
+        <span class="Adres"></span>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Aangeboden sinds</td>
+                    <td><span class="AangebodenSindsTekst"></span></td>
+                </tr>
+                <tr>
+                  <td>Vraagprijs</td>
+                  <td><span class="KoopPrijs"></span></td>
+                </tr>
+                <tr>
+                    <td>Bouwjaar</td>
+                    <td><span class="Bouwjaar"></span></td>
+
+                </tr>
+                <tr>
+                    <td>Makelaar</td>
+                    <td><span class="Makelaar"></span></td>
+                </tr>
+                <tr>
+                    <td>Telefoonnummer</td>
+                    <td><span class="MakelaarTelefoon"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr>
+                  <td>Oppervlakte</td>
+                  <td><span class="WoonOppervlakte"></span>m2</td>
+                </tr>
+                <tr>
+                  <td>Woonlagen</td>
+                  <td><span class="AantalWoonlagen"></span></td>
+                </tr>
+                <tr>
+                  <td>Kamers</td>
+                  <td><span class="AantalKamers"></span> kamers</td>
+                </tr>
+                <tr>
+                  <td>Garage</td>
+                  <td><span class="Garage"></span></td>
+                </tr>
+                <tr>
+                  <td>Tuin</td>
+                  <td><span class="Tuin"></span></td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
     <!-- JavaScript -->
@@ -55,6 +96,6 @@
     <script src="./assets/js/config.js" type="text/javascript"></script>
     <script src="./assets/js/app.js" type="text/javascript"></script>
 
-  </body>
+</body>
 
 </html>

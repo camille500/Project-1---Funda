@@ -12,10 +12,10 @@
       request.onload = function() {
         if (request.status >= 200 && request.status < 400) {
           const data = JSON.parse(request.responseText);
-          console.log(data);
           if (data.results) {
             houseData.buildUrl(data.results[0].address_components);
           } else if (data.Objects) {
+            console.log(data);
             houseData.clean(data);
           } else {
             houseDetail.clean(data);
@@ -58,6 +58,7 @@
   ------------------------------------------------  */
   const houseData = {
     buildUrl(location) {
+      elements.locationTitle.innerHTML = `${location[2].long_name} in ${location[4].long_name}`;
       const locationString = `/${location[4].long_name.toLowerCase()}/${location[2].long_name.toLowerCase()}/+1km/`;
       app.get(`${fundaBaseUrl}type=koop&zo=${locationString}&page=1&pagesize=25`);
     },
@@ -84,6 +85,7 @@
           }
         }
       }
+      sections.toggle(elements.listSection);
       this.render(data, attributes)
     },
     /* ALL FILTER FUNCTIONALITY
@@ -123,9 +125,19 @@
       this.render(data, attributes);
     },
     render(data, attributes) {
-      elements.listSection.classList.add('hidden');
-      elements.detailSection.classList.remove('hidden');
+      sections.toggle(elements.detailSection)
       Transparency.render(elements.detailSection, data, attributes);
+    }
+  }
+
+  /* SECTIONS
+  ------------------------------------------------  */
+  const sections = {
+    toggle(element) {
+      elements.allSections.forEach(function(el) {
+        el.classList.add('hidden');
+      });
+      element.classList.remove('hidden');
     }
   }
 
@@ -143,7 +155,7 @@
   ------------------------------------------------  */
   routie({
     '': () => {
-
+      app.init();
     },
     'detail/:id': (id) => {
       houseDetail.buildUrl(id);
@@ -152,6 +164,5 @@
 
   /* INITIALIZE THE APPLICATION
   ------------------------------------------------  */
-  app.init();
 
 };
