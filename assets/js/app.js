@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-=======
-/*-------------------------------------------------
-TODO: Show street and cityname
-      Create filters and sort options
-      Detailview for every house
-      Suggestions
-      Styling
-      Modular Pattern
---------------------------------------------------*/
-
->>>>>>> c4dfbcdea49b159ed3cb1dc36e2d0b1a8922dcac
 {
   'use strict';
 
@@ -24,6 +12,7 @@ TODO: Show street and cityname
       request.onload = function() {
         if (request.status >= 200 && request.status < 400) {
           const data = JSON.parse(request.responseText);
+          console.log(data);
           if (data.results) {
             houseData.buildUrl(data.results[0].address_components);
           } else if (data.Objects) {
@@ -75,7 +64,6 @@ TODO: Show street and cityname
     /* CLEAN UP THE HOUSE DATA FOR LISTS
     ------------------------------------------------  */
     clean(data) {
-      console.log(data);
       data.Objects.map(function(house) {
 
       });
@@ -92,12 +80,7 @@ TODO: Show street and cityname
         },
         list_image: {
           src: function() {
-<<<<<<< HEAD
             return this.FotoLarge;
-=======
-            console.log(this);
-            return `${this.FotoLarge}`;
->>>>>>> c4dfbcdea49b159ed3cb1dc36e2d0b1a8922dcac
           }
         }
       }
@@ -105,7 +88,7 @@ TODO: Show street and cityname
     },
     /* ALL FILTER FUNCTIONALITY
     ------------------------------------------------  */
-    filter(data) {
+    filters(data) {
 
     },
     /* RENDER THE CLEANED LIST WITH ATTRIBUTES
@@ -127,6 +110,22 @@ TODO: Show street and cityname
     ------------------------------------------------  */
     clean(data) {
       console.log(data);
+      this.setAttributes(data);
+    },
+    setAttributes(data) {
+      let attributes = {
+        detail_image: {
+          src: function() {
+            return this.HoofdFoto;
+          }
+        }
+      }
+      this.render(data, attributes);
+    },
+    render(data, attributes) {
+      elements.listSection.classList.add('hidden');
+      elements.detailSection.classList.remove('hidden');
+      Transparency.render(elements.detailSection, data, attributes);
     }
   }
 
