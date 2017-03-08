@@ -1,4 +1,11 @@
 # Project 1 - Funda
+This is the the project I've been working on for Funda. The application is still in development.
+
+## Live version
+Open live version in **Firefox** or **Safari**, still working on Google Chrome
+[Click here to see the live version](http://camille-sebastien.com/funda/)
+
+## Assignment
 
 ***In de basis gaat het om de volgende 4 scenarios (‘user stories’):***
 

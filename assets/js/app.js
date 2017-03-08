@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+/*-------------------------------------------------
+TODO: Show street and cityname
+      Create filters and sort options
+      Detailview for every house
+      Suggestions
+      Styling
+      Modular Pattern
+--------------------------------------------------*/
+
+>>>>>>> c4dfbcdea49b159ed3cb1dc36e2d0b1a8922dcac
 {
   'use strict';
 
@@ -80,7 +92,12 @@
         },
         list_image: {
           src: function() {
+<<<<<<< HEAD
             return this.FotoLarge;
+=======
+            console.log(this);
+            return `${this.FotoLarge}`;
+>>>>>>> c4dfbcdea49b159ed3cb1dc36e2d0b1a8922dcac
           }
         }
       }
