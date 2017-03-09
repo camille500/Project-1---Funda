@@ -6,11 +6,11 @@ const Funda = (function() {
   const makeUrl = () => {
     let city = localStorage.getItem('city');
     let street = localStorage.getItem('street');
-    if(city && street) {
+    if (city && street) {
       const locationString = `/${city}/${street}/+1km/`;
       Requests.get(`${config.fundaBaseUrl}type=koop&zo=${locationString}&page=1&pagesize=25`, 'list');
     } else {
-      Location.init();
+      UserLocation.init();
     }
   };
 
@@ -23,16 +23,30 @@ const Funda = (function() {
       object.PublicatieDatumString = Utils.formatDate(object.PublicatieDatum, 'string');
       object.PublicatieDatum = Utils.formatDate(object.PublicatieDatum, 'date');
     });
-    Render.list(listData);
+    localStorage.setItem('locationResult', JSON.stringify(listData));
+    setListAttributes(listData);
   };
 
   const setListAttributes = (cleanListData) => {
-
+    let attributes = {
+      houseID: {
+        href: function() {
+          return `#detail/${this.Id}`;
+        }
+      },
+      mainImage: {
+        src: function() {
+          return this.FotoLarge;
+        }
+      }
+    }
+    Sections.renderList(cleanListData, attributes)
   };
 
   return {
-      makeUrl: makeUrl,
-      cleanList: cleanList
+    makeUrl: makeUrl,
+    cleanList: cleanList,
+    setListAttributes: setListAttributes
   };
 
 })();

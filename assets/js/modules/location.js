@@ -1,4 +1,4 @@
-const Location = (function() {
+const UserLocation = (function() {
   'use strict';
 
   /* GET THE USERS LOCATION

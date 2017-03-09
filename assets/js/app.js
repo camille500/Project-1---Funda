@@ -4,5 +4,6 @@
 {
   'use strict';
 
-  Location.init()
+  Routes.init();
+
 }

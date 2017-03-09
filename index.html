@@ -18,11 +18,12 @@
 <body>
 
   <header>
-    <img src="./assets/images/funda-logo.svg" alt="Logo van Funda.nl" />
+    <a href="./index.html#overzicht"><img src="./assets/images/funda-logo.svg" alt="Logo van Funda.nl" /></a>
   </header>
 
   <main>
 
+    <!-- LIST SECTION -->
     <section class="listSection">
       <div>
         <img class="mainImage" />
@@ -32,6 +33,11 @@
           <p><span class="Koopprijs"></span></p>
         </section>
       </div>
+    </section>
+
+    <!-- DETAIL SECTION -->
+    <section class="detailSection hidden">
+
     </section>
 
   </main>
@@ -48,11 +54,12 @@
   <script type="text/javascript" src="./assets/js/config.js"></script>
 
   <!-- JavaScript Modules -->
+  <script type="text/javascript" src="./assets/js/modules/routes.js"></script>
   <script type="text/javascript" src="./assets/js/modules/utils.js"></script>
   <script type="text/javascript" src="./assets/js/modules/location.js"></script>
   <script type="text/javascript" src="./assets/js/modules/requests.js"></script>
   <script type="text/javascript" src="./assets/js/modules/funda.js"></script>
-  <script type="text/javascript" src="./assets/js/modules/render.js"></script>
+  <script type="text/javascript" src="./assets/js/modules/sections.js"></script>
 
   <!-- Main application -->
   <script type="text/javascript" src="./assets/js/app.js"></script>

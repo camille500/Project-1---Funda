@@ -1,21 +1,21 @@
-const Render = (function() {
+const Sections = (function() {
   'use strict';
 
   /* FUNCTIONALITY FOR RENDERING LISTS WITH DATA
   ------------------------------------------------  */
-  const list = (listData) => {
-    Transparency.render(elements.listSection, listData.Objects);
+  const renderList = (listData, attributes) => {
+    Transparency.render(elements.listSection, listData.Objects, attributes);
   }
 
   /* FUNCTIONALITY FOR RENDERING DETAIL WITH DATA
   ------------------------------------------------  */
-  const detail = () => {
+  const renderDetail = () => {
 
   }
 
   return {
-      list: list,
-      detail: detail
+      renderList: renderList,
+      renderDetail: renderDetail
   };
 
 })();

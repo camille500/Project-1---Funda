@@ -26,7 +26,7 @@ const Requests = (function() {
   ------------------------------------------------  */
   const checkData = (data, type) => {
     if(type === 'location') {
-      Location.toString(data);
+      UserLocation.toString(data);
     } else if(type === 'list') {
       Funda.cleanList(data);
     }
