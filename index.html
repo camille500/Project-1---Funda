@@ -18,51 +18,60 @@
 <body>
 
   <header>
-    <a href="./index.html#overzicht"><img src="./assets/images/funda-logo.svg" alt="Logo van Funda.nl" /></a>
+    <nav>
+        <div><img src="./assets/images/funda-logo.svg" alt="Logo van Funda.nl"/></div>
+        <label for="mobileMenu">Menu</label>
+        <input type="checkbox" id="mobileMenu"/>
+        <ul>
+            <li><a href="#overzicht">Overzicht</a></li>
+            <li><a href="#favorieten">Favorieten</a></li>
+            <li><a href="#">Update locatie</a></li>
+        </ul>
+    </nav>
   </header>
 
-  <main>
+    <main>
 
-    <!-- LIST SECTION -->
-    <section class="listSection">
-      <div>
-        <img class="mainImage" />
-        <section class="infoWrapper">
-          <p><a class="houseID"><span class="Adres"></span></a></p>
-          <p><span class="Postcode"></span>, <span class="Woonplaats"></span></p>
-          <p><span class="Koopprijs"></span></p>
+        <!-- LIST SECTION -->
+        <section class="wrapper listSection hidden">
+            <div>
+                <img class="mainImage" />
+                <section class="infoWrapper">
+                    <p><a class="houseID"><span class="Adres"></span></a></p>
+                    <p><span class="Postcode"></span>, <span class="Woonplaats"></span></p>
+                    <p><span class="Koopprijs"></span></p>
+                </section>
+            </div>
         </section>
-      </div>
-    </section>
 
-    <!-- DETAIL SECTION -->
-    <section class="detailSection hidden">
+        <!-- DETAIL SECTION -->
+        <section class="wrapper detailSection hidden">
 
-    </section>
+        </section>
 
-  </main>
+    </main>
 
-  <footer>
+    <footer>
 
-  </footer>
+    </footer>
 
-  <!-- Micro Libraries -->
-  <script type="text/javascript" src="./assets/js/libraries/routie.js"></script>
-  <script type="text/javascript" src="./assets/js/libraries/transparency.js"></script>
+    <!-- Micro Libraries -->
+    <script type="text/javascript" src="./assets/js/libraries/routie.js"></script>
+    <script type="text/javascript" src="./assets/js/libraries/transparency.js"></script>
 
-  <!-- Configuration  -->
-  <script type="text/javascript" src="./assets/js/config.js"></script>
+    <!-- Configuration  -->
+    <script type="text/javascript" src="./assets/js/config.js"></script>
 
-  <!-- JavaScript Modules -->
-  <script type="text/javascript" src="./assets/js/modules/routes.js"></script>
-  <script type="text/javascript" src="./assets/js/modules/utils.js"></script>
-  <script type="text/javascript" src="./assets/js/modules/location.js"></script>
-  <script type="text/javascript" src="./assets/js/modules/requests.js"></script>
-  <script type="text/javascript" src="./assets/js/modules/funda.js"></script>
-  <script type="text/javascript" src="./assets/js/modules/sections.js"></script>
+    <!-- JavaScript Modules -->
+    <script type="text/javascript" src="./assets/js/modules/routes.js"></script>
+    <script type="text/javascript" src="./assets/js/modules/utils.js"></script>
+    <script type="text/javascript" src="./assets/js/modules/location.js"></script>
+    <script type="text/javascript" src="./assets/js/modules/requests.js"></script>
+    <script type="text/javascript" src="./assets/js/modules/funda.js"></script>
+    <script type="text/javascript" src="./assets/js/modules/sections.js"></script>
 
-  <!-- Main application -->
-  <script type="text/javascript" src="./assets/js/app.js"></script>
+    <!-- Main application -->
+    <script type="text/javascript" src="./assets/js/app.js"></script>
 
 </body>
 

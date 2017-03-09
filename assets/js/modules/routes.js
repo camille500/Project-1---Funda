@@ -14,12 +14,13 @@ const Routes = (function() {
         window.location.hash = 'overzicht';
       },
       'overzicht': () => {
+        Sections.toggleSections(elements.listSection);
         if(localStorage.getItem('locationResult')) {
           Funda.setListAttributes(JSON.parse(localStorage.getItem('locationResult')));
-        } 
+        }
       },
       'detail/:id': (id) => {
-        console.log(id);
+        Sections.toggleSections(elements.detailSection);
       }
     });
   };
