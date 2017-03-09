@@ -31,6 +31,12 @@
       };
       request.send();
     },
+    formatCurrency(amount) {
+      amount = amount.toFixed(0).replace(/./g, function(c, i, a) {
+        return i && c !== "." && ((a.length - i) % 3 === 0) ? '.' + c : c;
+      });
+      return `€${amount},-`;
+    }
   };
 
   /* GETTING THE USERS LOCATION
@@ -58,15 +64,15 @@
   ------------------------------------------------  */
   const houseData = {
     buildUrl(location) {
-      elements.locationTitle.innerHTML = `${location[2].long_name} in ${location[4].long_name}`;
-      const locationString = `/${location[4].long_name.toLowerCase()}/${location[2].long_name.toLowerCase()}/+1km/`;
+      elements.locationTitle.innerHTML = `${location[1].long_name} in ${location[4].long_name}`;
+      const locationString = `/${location[4].long_name.toLowerCase()}/${location[1].long_name.toLowerCase()}/+1km/`;
       app.get(`${fundaBaseUrl}type=koop&zo=${locationString}&page=1&pagesize=25`);
     },
     /* CLEAN UP THE HOUSE DATA FOR LISTS
     ------------------------------------------------  */
     clean(data) {
       data.Objects.map(function(house) {
-
+        house.Koopprijs = app.formatCurrency(house.Koopprijs);
       });
       this.setAttributes(data);
     },
@@ -111,6 +117,16 @@
     /* CLEAN DATA FOR THE DETAIL VIEW
     ------------------------------------------------  */
     clean(data) {
+      data.KoopPrijs = app.formatCurrency(data.KoopPrijs);
+      for(let key in data) {
+        if(data[key] === null) {
+          data[key] = 'Onbekend';
+        } else if(data[key] === false) {
+          data[key] = 'Nee';
+        } else if(data[key] === true) {
+          data[key] = 'Ja';
+        }
+      }
       console.log(data);
       this.setAttributes(data);
     },
@@ -155,7 +171,7 @@
   ------------------------------------------------  */
   routie({
     '': () => {
-      app.init();
+
     },
     'detail/:id': (id) => {
       houseDetail.buildUrl(id);
@@ -164,5 +180,6 @@
 
   /* INITIALIZE THE APPLICATION
   ------------------------------------------------  */
+  app.init();
 
 };
