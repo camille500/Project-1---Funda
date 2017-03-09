@@ -6,3 +6,5 @@ const config = {
   googleApiKey: '&key=AIzaSyC_MvSpOU_4XLoneCkdMy_CG1eg8lK7UIA',
   googleBaseUrl: 'https://maps.googleapis.com/maps/api/geocode/json?'
 }
+
+const date = ['Januari', 'Februari', 'Maart', 'Apri', 'Mei', 'Juni', 'Juli', 'Augustus', 'Oktober', 'November', 'December'];

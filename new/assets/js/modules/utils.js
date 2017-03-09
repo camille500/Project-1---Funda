@@ -9,10 +9,19 @@ const Utils = (function() {
     return `€${value},-`;
   }
 
-  const formatDate = (date) => {
-    date = date.split('/Date(').pop().split(')/').shift();
-    console.log(date)
-    //return `${date.getFullYear()}`
+  /* FORMAT THE STRING TO A DATE
+  ------------------------------------------------  */
+  const formatDate = (dateString, type) => {
+    const months = ['Januari', 'Februari', 'Maart', 'Apri', 'Mei', 'Juni', 'Juli', 'Augustus', 'Oktober', 'November', 'December'];
+    let date = new Date(Number(dateString.replace(/\/Date\((.*?)\+.*\)\//, '$1')));
+    if(type === 'date') {
+      return date;
+    } else {
+      let monthDay = `0${date.getDate()}`;
+      let month = months[date.getMonth()];
+      let dateString = `${monthDay.slice(-2)} ${month} ${date.getFullYear()}`;
+      return dateString;
+    }
   }
 
   return {

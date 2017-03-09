@@ -18,7 +18,9 @@ const Funda = (function() {
   const cleanList = (listData) => {
     listData.Objects.map(function(object) {
       object.Koopprijs = Utils.formatCurrency(object.Koopprijs);
-      object.PublicatieDatum = Utils.formatDate(object.PublicatieDatum)
+      object.KoopprijsTot = Utils.formatCurrency(object.KoopprijsTot);
+      object.PublicatieDatumString = Utils.formatDate(object.PublicatieDatum, 'string');
+      object.PublicatieDatum = Utils.formatDate(object.PublicatieDatum, 'date');
     });
     console.log(listData)
   }
