@@ -1,4 +1,5 @@
 const Location = (function() {
+  'use strict';
 
   /* GET THE USERS LOCATION
   ------------------------------------------------  */

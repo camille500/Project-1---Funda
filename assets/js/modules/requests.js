@@ -1,4 +1,5 @@
 const Requests = (function() {
+  'use strict';
 
   /* XMLHTTPREQUEST FOR GETTING THE DESIRED DATA
   ------------------------------------------------  */

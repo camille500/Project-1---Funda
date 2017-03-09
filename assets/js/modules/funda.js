@@ -1,4 +1,5 @@
 const Funda = (function() {
+  'use strict';
 
   /* BUILD THE URL FOR THE API REQUEST TO FUNDA
   ------------------------------------------------  */
@@ -22,7 +23,7 @@ const Funda = (function() {
       object.PublicatieDatumString = Utils.formatDate(object.PublicatieDatum, 'string');
       object.PublicatieDatum = Utils.formatDate(object.PublicatieDatum, 'date');
     });
-    console.log(listData)
+    Render.list(listData);
   }
 
   return {

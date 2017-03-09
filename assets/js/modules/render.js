@@ -1,4 +1,5 @@
 const Render = (function() {
+  'use strict';
 
   /* FUNCTIONALITY FOR RENDERING LISTS WITH DATA
   ------------------------------------------------  */

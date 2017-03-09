@@ -1,2 +1,54 @@
-body {}
-  
+/* GENERIC STYLES
+------------------------------------------------  */
+body {
+  margin: 0;
+  font-family: 'Open Sans';
+  font-size: 1em;
+}
+
+main {
+  background-color: linear-gradient(to bottom, #E6F2F7 0%, #E6F2F7 60%, #fff 90%);
+}
+
+footer {
+  background-color: rgb(237, 237, 237);
+}
+
+h1, h2, h3, h4, h5 {
+
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* COMPONENTS
+------------------------------------------------  */
+
+/* HEADER & NAVIGATION
+------------------------------------------------  */
+header {
+  padding: 1em;
+  background-color: rgb(247, 161, 0);
+}
+
+header > img {
+  max-width: 7.5em;
+  margin-top: .25em;
+}
+
+/* LIST VIEW
+------------------------------------------------  */
+
+/* DETAIL VIEW
+------------------------------------------------  */
+
+/* HELPERS
+------------------------------------------------  */
+.hidden {
+  display: none;
+}

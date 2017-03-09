@@ -1,4 +1,5 @@
 const Utils = (function() {
+  'use strict';
 
   /* BUILD THE URL FOR THE API REQUEST TO FUNDA
   ------------------------------------------------  */
