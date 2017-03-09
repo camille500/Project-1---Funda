@@ -12,7 +12,7 @@ const Funda = (function() {
     } else {
       Location.init();
     }
-  }
+  };
 
   /* CLEAN THE LIST DATA
   ------------------------------------------------  */
@@ -24,7 +24,11 @@ const Funda = (function() {
       object.PublicatieDatum = Utils.formatDate(object.PublicatieDatum, 'date');
     });
     Render.list(listData);
-  }
+  };
+
+  const setListAttributes = (cleanListData) => {
+
+  };
 
   return {
       makeUrl: makeUrl,

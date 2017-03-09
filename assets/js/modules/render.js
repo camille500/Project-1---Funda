@@ -3,8 +3,8 @@ const Render = (function() {
 
   /* FUNCTIONALITY FOR RENDERING LISTS WITH DATA
   ------------------------------------------------  */
-  const list = () => {
-
+  const list = (listData) => {
+    Transparency.render(elements.listSection, listData.Objects);
   }
 
   /* FUNCTIONALITY FOR RENDERING DETAIL WITH DATA
