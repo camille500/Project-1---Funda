@@ -1,25 +1,27 @@
 const Funda = (function() {
   'use strict';
 
-  /* BUILD THE URL FOR THE API REQUEST TO FUNDA
+  /* BUILD THE URL FOR THE API REQUEST TO FUNDA (LIST)
   ------------------------------------------------  */
-  const makeUrl = () => {
+  const makeListUrl = () => {
     let city = localStorage.getItem('city');
     let street = localStorage.getItem('street');
-    if (city && street) {
-      const locationString = `/${city}/${street}/+1km/`;
-      Requests.get(`${config.fundaBaseUrl}type=koop&zo=${locationString}&page=1&pagesize=25`, 'list');
-    } else {
-      UserLocation.init();
-    }
+    const locationString = `/${city}/${street}/+1km/`;
+    Requests.get(`${config.fundaListBaseUrl}type=koop&zo=${locationString}&page=1&pagesize=25`, 'list');
+  };
+
+  /* BUILD THE URL FOR THE API REQUEST TO FUNDA (DETAIL)
+  ------------------------------------------------  */
+  const makeDetailUrl = (id) => {
+    Requests.get(`${config.fundaDetailBaseUrl}koop/${id}`, 'detail');
   };
 
   /* CLEAN THE LIST DATA
   ------------------------------------------------  */
   const cleanList = (listData) => {
     listData.Objects.map(function(object) {
-      object.Koopprijs = Utils.formatCurrency(object.Koopprijs);
-      object.KoopprijsTot = Utils.formatCurrency(object.KoopprijsTot);
+      object.KoopprijsString = Utils.formatCurrency(object.Koopprijs, ` ${object.Prijs.KoopAbbreviation}`);
+      object.KoopprijsTotString = Utils.formatCurrency(object.KoopprijsTot, ` ${object.Prijs.KoopAbbreviation}`);
       object.PublicatieDatumString = Utils.formatDate(object.PublicatieDatum, 'string');
       object.PublicatieDatum = Utils.formatDate(object.PublicatieDatum, 'date');
     });
@@ -27,6 +29,18 @@ const Funda = (function() {
     setListAttributes(listData);
   };
 
+  /* CLEAN THE DETAIL DATA
+  ------------------------------------------------  */
+  const cleanDetail = (detailData) => {
+    detailData.AangebodenSinds = Utils.formatDate(detailData.AangebodenSinds, 'string');
+    detailData.GewijzigdDatum = Utils.formatDate(detailData.GewijzigdDatum, 'string');
+    detailData.KoopPrijs = Utils.formatCurrency(detailData.Koopprijs, ',-');
+    detailData.PublicatieDatum = Utils.formatDate(detailData.PublicatieDatum, 'string');
+    setDetailAttributes(detailData);
+  };
+
+  /* SET ALL LIST ATTRIBUTES SO THAT TRANSPARENCY CAN RENDER THEM
+  ------------------------------------------------  */
   const setListAttributes = (cleanListData) => {
     let attributes = {
       houseID: {
@@ -43,10 +57,40 @@ const Funda = (function() {
     Sections.renderList(cleanListData, attributes)
   };
 
+  /* SET ALL DETAIL ATTRIBUTES SO THAT TRANSPARENCY CAN RENDER THEM
+  ------------------------------------------------  */
+  const setDetailAttributes = (cleanDetailData) => {
+
+    let attributes = { };
+
+    const getAllImages = function() {
+      cleanDetailData.Media.map(function(item, i) {
+        if(item.MediaItems[2]) {
+          setImageAttribute(item.MediaItems[2].Url, i);
+        }
+      });
+    };
+
+    const setImageAttribute = (item, index) => {
+      attributes[`photo${index}`] = { src: function() { return item } };
+    };
+
+    getAllImages();
+
+    Sections.renderDetail(cleanDetailData, attributes)
+  };
+
+
+
+  /* MAKES SURE THAT THE RETURNED FUNCTIONS CAN BE USED
+  ------------------------------------------------  */
   return {
-    makeUrl: makeUrl,
+    makeListUrl: makeListUrl,
+    makeDetailUrl: makeDetailUrl,
     cleanList: cleanList,
-    setListAttributes: setListAttributes
+    cleanDetail: cleanDetail,
+    setListAttributes: setListAttributes,
+    setDetailAttributes: setDetailAttributes
   };
 
 })();

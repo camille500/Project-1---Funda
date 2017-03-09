@@ -16,10 +16,12 @@ const Sections = (function() {
 
   /* FUNCTIONALITY FOR RENDERING DETAIL WITH DATA
   ------------------------------------------------  */
-  const renderDetail = () => {
-
+  const renderDetail = (detailData, attributes) => {
+    Transparency.render(elements.detailSection, detailData, attributes);
   };
 
+  /* MAKES SURE THAT THE RETURNED FUNCTIONS CAN BE USED
+  ------------------------------------------------  */
   return {
       toggleSections: toggleSections,
       renderList: renderList,

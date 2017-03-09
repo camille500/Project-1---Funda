@@ -19,12 +19,18 @@ const Routes = (function() {
           Funda.setListAttributes(JSON.parse(localStorage.getItem('locationResult')));
         }
       },
+      'favorieten': () => {
+
+      },
       'detail/:id': (id) => {
+        Funda.makeDetailUrl(id);
         Sections.toggleSections(elements.detailSection);
       }
     });
   };
 
+  /* MAKES SURE THAT THE RETURNED FUNCTIONS CAN BE USED
+  ------------------------------------------------  */
   return {
       init: init,
   };

@@ -31,12 +31,15 @@ const UserLocation = (function() {
         }
       });
     });
-    Funda.makeUrl();
+    Funda.makeListUrl();
   }
 
+  /* MAKES SURE THAT THE RETURNED FUNCTIONS CAN BE USED
+  ------------------------------------------------  */
   return {
       init: init,
       makeUrl: makeUrl,
       toString: toString
   };
+
 })();

@@ -37,14 +37,13 @@ ul {
 
 /* HEADER & NAVIGATION
 ------------------------------------------------  */
-
 header nav {
     margin: 0;
     padding: 0;
     background-color: rgb(247, 161, 0);
 }
 
-header nav > div {
+header nav > a {
     display: block;
     padding: 0 1.8em;
     float: left;
@@ -92,7 +91,7 @@ label[for='mobileMenu'], nav input {
 }
 
 @media screen and (max-width: 48.125em) {
-    header nav > div {
+    header nav > a {
         padding: 0;
         width: 100%;
         text-align: center;
@@ -135,7 +134,6 @@ label[for='mobileMenu'], nav input {
 
 /* LIST VIEW
 ------------------------------------------------  */
-
 .listSection {
     display: flex;
     flex-direction: row;
@@ -164,7 +162,6 @@ label[for='mobileMenu'], nav input {
         max-width: 30%;
     }
 }
-
 
 /* DETAIL VIEW
 ------------------------------------------------  */
