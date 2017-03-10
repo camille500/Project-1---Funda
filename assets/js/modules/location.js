@@ -4,12 +4,13 @@ const UserLocation = (function() {
   /* GET THE USERS LOCATION
   ------------------------------------------------  */
   const init = () => {
-    if (navigator.geolocation.getCurrentPosition) {
+    elements.loader.classList.remove('hidden');
+    if (navigator.geolocation.getCurrentPosition && window.location.hostname != 'camille-sebastien.com') {
       navigator.geolocation.getCurrentPosition(location => {
         makeUrl(location.coords.latitude, location.coords.longitude)
       });
     } else {
-      console.log('Cannot get location');
+      makeUrl(52.377027, 4.919229);
     }
   }
 

@@ -12,12 +12,15 @@ const Sections = (function() {
   ------------------------------------------------  */
   const renderList = (listData, attributes) => {
     Transparency.render(elements.listSection, listData.Objects, attributes);
+    Transparency.render(elements.sortOptions, listData);
+    elements.loader.classList.add('hidden');
   };
 
   /* FUNCTIONALITY FOR RENDERING DETAIL WITH DATA
   ------------------------------------------------  */
   const renderDetail = (detailData, attributes) => {
     Transparency.render(elements.detailSection, detailData, attributes);
+    elements.loader.classList.add('hidden');
   };
 
   /* MAKES SURE THAT THE RETURNED FUNCTIONS CAN BE USED

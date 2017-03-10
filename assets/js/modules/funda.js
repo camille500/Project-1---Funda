@@ -3,10 +3,11 @@ const Funda = (function() {
 
   /* BUILD THE URL FOR THE API REQUEST TO FUNDA (LIST)
   ------------------------------------------------  */
-  const makeListUrl = (page = 1) => {
-    let city = localStorage.getItem('city');
+  const makeListUrl = () => {
+    let city = localStorage.getItem('city'); // Get the user location (city & street)
     let street = localStorage.getItem('street');
     let distance = localStorage.getItem('filter4');
+    let page = localStorage.getItem('page');
     const locationString = `/${city}/${street}/${distance}/`;
     Requests.get(`${config.fundaListBaseUrl}type=koop&zo=${locationString}&page=${page}&pagesize=24`, 'list');
   };

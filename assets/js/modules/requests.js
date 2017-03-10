@@ -4,13 +4,13 @@ const Requests = (function() {
   /* XMLHTTPREQUEST FOR GETTING THE DESIRED DATA
   ------------------------------------------------  */
   const get = (url, type) => {
-    const request = config.request;
+    elements.loader.classList.remove('hidden');
+    const request = config.request; // XMLHttpRequest
     request.open('GET', url, true);
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
         const data = JSON.parse(request.responseText);
-        console.log(data);
-        checkData(data, type);
+        checkData(data, type); // Check what kind of dataset it returns
       } else {
         console.log('error');
       }
@@ -27,11 +27,12 @@ const Requests = (function() {
   ------------------------------------------------  */
   const checkData = (data, type) => {
     if(type === 'location') {
-      UserLocation.toString(data);
+      UserLocation.toString(data); // Handle user location data
     } else if(type === 'list') {
-      Funda.cleanList(data);
+      console.log(data);
+      Funda.cleanList(data); // Handle list data
     } else {
-      Funda.cleanDetail(data);
+      Funda.cleanDetail(data); // Handle detail data
     }
   }
 

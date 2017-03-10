@@ -32,9 +32,14 @@
 
     <main>
 
+      <section class="loading hidden">
+        <h1>Wij zoeken uw toekomstige huis voor u op!</h1>
+          <div></div>
+      </section>
+
       <section class="wrapper filterSection hidden">
-        <h2>Mijn prioriteiten</h2>
-        <select class="filter">
+        <h1>Mijn prioriteiten</h1>
+          <select class="filter">
           <span></span>
           <option value="" disabled selected>Mijn eerste prioriteit</option>
           <option value="Koopprijs">Hoogte koopprijs</option>
@@ -75,6 +80,7 @@
         <section class="wrapper sortOptions hidden">
           <a href="#overzicht/aflopend">Aflopend</a>
           <a href="#overzicht/oplopend">Oplopend</a>
+          <h2 class="MetaData"><span class="Omschrijving"></span></h2>
         </section>
 
         <section class="wrapper listSection hidden">
@@ -83,11 +89,15 @@
                 <section class="infoWrapper">
                     <p><a class="houseID"><span class="Adres"></span></a></p>
                     <p><span class="Postcode"></span> in <span class="Woonplaats"></span></p>
-                    <p><span class="KoopprijsString"></span></p>
-                    <p><span class="Woonoppervlakte"></span>m&sup2;</p>
-                    <p><span class="AantalKamers"></span></p>
+                    <span class="KoopprijsString"></span>
+                    <p>Woonoppervlakte van <span class="Woonoppervlakte"></span>m&sup2;</p>
+                    <p>In totaal <span class="AantalKamers"></span> kamers</p>
                 </section>
             </div>
+        </section>
+
+        <section class="wrapper meerResultaten hidden">
+            <a href="#nieuwe-locatie/2">Meer resultaten</a>
         </section>
 
         <!-- DETAIL SECTION -->

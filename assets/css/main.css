@@ -1,6 +1,5 @@
 /* GENERIC STYLES
 ------------------------------------------------  */
-
 body {
     position: relative;
     min-height: 100%;
@@ -9,41 +8,38 @@ body {
     font-family: 'Open Sans';
     font-size: 1em;
 }
-
 main {
     min-height: 78vh;
-    margin-top: 2em;
+    margin-top: 3em;
 }
-
 footer {
     position: relative;
     width: 100%;
     height: 4em;
     bottom: 0;
     left: 0;
-    margin-top: 1em;
+    margin-top: 2em;
     background-color: rgb(237, 237, 237);
     text-align: center;
     padding-top: .75em;
 }
-
 h1, h2, h3, h4, h5 {
   margin: 0;
   margin-bottom: 1em;
+  color: rgb(83, 36, 27);
 }
-
 a {
     text-decoration: none;
 }
-
+p {
+  color: #666;
+}
 img {
     max-width: 100%;
 }
-
 ul {
     list-style: none;
 }
-
 div {
   margin: 0;
   padding: 0;
@@ -153,10 +149,46 @@ label[for='mobileMenu'], nav input {
     }
 }
 
+/* LOADER
+---------------------------------------------------- */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 150vh;
+    width: 100vw;
+    margin-top: -3em;
+    background-color: rgb(247, 161, 0);
+    z-index: 1000;
+    cursor: progress;
+}
+.loading > div {
+    position: relative;
+    top: 30%;
+    margin: 0 auto;
+    border: .6em solid #fff;
+    border-top: .6em solid rgb(0, 170, 230);
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+    animation: spin 1.5s linear infinite;
+}
+.loading h1 {
+  color: white;
+  position: relative;
+  top: 14em;
+  text-align: center;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 /* LIST VIEW
 ------------------------------------------------  */
 .listSection {
+    /*position: relative;*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -164,6 +196,7 @@ label[for='mobileMenu'], nav input {
 }
 
 .listSection div {
+    position: relative;
     max-width: 90%;
     margin-bottom: 1em;
     background-color: rgb(230, 242, 247);
@@ -171,6 +204,40 @@ label[for='mobileMenu'], nav input {
 
 .listSection section {
     padding: 0 1em;
+}
+
+.listSection a:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+}
+
+.listSection div:hover p {
+  font-weight: 600;
+  color: rgb(79, 79, 79);
+}
+
+.listSection div:hover a {
+  color: rgb(247, 161, 0);
+}
+
+.listSection .KoopprijsString {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: .75em;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  font-size: 1.2em;
+}
+
+.houseID {
+  font-weight: 700;
+  font-size: 1.35em;
+  color: #0071B3;
 }
 
 @media screen and (min-width: 37.5em) {
@@ -193,9 +260,10 @@ label[for='mobileMenu'], nav input {
   flex-wrap: wrap;
   align-items: center;
   padding-top: 3em;
+  border: none;
 }
 
-.filterSection > a {
+.filterSection  a {
   padding: .6em 6em;
   border-radius: .2em;
   border: .2em solid transparent;
@@ -204,15 +272,17 @@ label[for='mobileMenu'], nav input {
   font-size: 1.2em;
   font-weight: 800;
 }
-
-.filterSection > a:focus {
+.filterSection > h2, .filterSection > h1 {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 1em;
+}
+.filterSection > h1 {
+  font-size: 1.9em;
+}
+.filterSection a:focus {
   border-color: #0071B3;
 }
-
-.Adres {
-  margin-left: 1.7em;
-}
-
 select {
     max-width: 35em;
     height: 3.25em;
@@ -233,9 +303,11 @@ select:hover {
     border: .1em solid #999;
 }
 .sortOptions {
-  margin-bottom: 2em;
+  margin-bottom: 3em;
+  margin-left: .5em;
 }
-.sortOptions > a {
+.sortOptions > a,
+.meerResultaten > a {
     padding: .75em 1em;
     border: .2em solid transparent;
     margin-left: 1em;
@@ -243,16 +315,32 @@ select:hover {
     font-size: 1.1em;
     color: white;
 }
+.sortOptions > a:hover,
+.meerResultaten > a:hover {
+  background-color: #025d91;
+}
 select:focus {
   border-color: #0071B3;
 }
-
 .sortOptions > a:focus {
   border-color: rgb(144, 219, 4);
+  background-color: #003554;
+}
+
+.meerResultaten > a {
+  display: block;
+  max-width: 20em;
+  text-align: center;
+  margin: 3em auto 2em auto;
 }
 
 /* DETAIL VIEW
 ------------------------------------------------  */
+.detailSection {
+  position: relative;
+}
+
+
 .images {
   display: flex;
   flex-direction: row;
@@ -286,6 +374,14 @@ select:focus {
   margin-bottom: 1.2em;
 }
 
+.KoopprijsString {
+
+}
+
+h1 .Adres {
+  margin-left: 1.7em;
+}
+
 @media screen and (max-width: 50em) {
   .images > div:last-of-type,
   .images > div:nth-of-type(2) {
@@ -295,7 +391,7 @@ select:focus {
     width: 100%;
     text-align: center;
   }
-  .Adres {
+  h1.Adres {
     margin-left: .5em;
   }
 }
