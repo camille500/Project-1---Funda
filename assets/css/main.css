@@ -245,7 +245,6 @@ label[for='mobileMenu'], nav input {
 }
 
 .listSection div:hover p {
-  font-weight: 600;
   color: rgb(79, 79, 79);
 }
 
