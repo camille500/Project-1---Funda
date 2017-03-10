@@ -32,7 +32,7 @@ const UserLocation = (function() {
         }
       });
     });
-    Funda.makeListUrl();
+    Funda.makeListUrl('');
   }
 
   /* MAKES SURE THAT THE RETURNED FUNCTIONS CAN BE USED

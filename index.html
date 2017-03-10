@@ -23,9 +23,9 @@
         <label for="mobileMenu">Menu</label>
         <input type="checkbox" id="mobileMenu"/>
         <ul>
-            <li><a href="#overzicht">Overzicht</a></li>
-            <li><a href="#favorieten">Favorieten</a></li>
-            <li><a href="">Update locatie</a></li>
+            <li><a href="#overzicht-old">Overzicht</a></li>
+            <li><a href="#aanbevelingen">Aanbevelingen</a></li>
+            <li><a href="">Update filters</a></li>
         </ul>
     </nav>
   </header>
@@ -82,8 +82,21 @@
           <a href="#overzicht/oplopend">Oplopend</a>
           <h2 class="LocatieData"></h2>
         </section>
-      
+
         <section class="wrapper listSection hidden">
+            <div>
+                <img class="mainImage" />
+                <section class="infoWrapper">
+                    <p><a class="houseID"><span class="Adres"></span></a></p>
+                    <p><span class="Postcode"></span> in <span class="Woonplaats"></span></p>
+                    <span class="KoopprijsString"></span>
+                    <p>Woonoppervlakte van <span class="Woonoppervlakte"></span>m&sup2;</p>
+                    <p>In totaal <span class="AantalKamers"></span> kamers</p>
+                </section>
+            </div>
+        </section>
+
+        <section class="wrapper aanbevelingSection hidden">
             <div>
                 <img class="mainImage" />
                 <section class="infoWrapper">

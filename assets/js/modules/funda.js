@@ -3,12 +3,13 @@ const Funda = (function() {
 
   /* BUILD THE URL FOR THE API REQUEST TO FUNDA (LIST)
   ------------------------------------------------  */
-  const makeListUrl = () => {
+  const makeListUrl = (extraFilters) => {
     let city = localStorage.getItem('city'); // Get the user location (city & street)
     let street = localStorage.getItem('street');
     let distance = localStorage.getItem('filter4');
     let page = localStorage.getItem('page');
-    const locationString = `/${city}/${street}/${distance}/`;
+    const locationString = `/${city}/${street}/${distance}${extraFilters}/`;
+    console.log(locationString)
     Requests.get(`${config.fundaListBaseUrl}type=koop&zo=${locationString}&page=${page}&pagesize=24`, 'list');
   };
 
@@ -21,12 +22,18 @@ const Funda = (function() {
   /* CLEAN THE LIST DATA
   ------------------------------------------------  */
   const cleanList = (listData) => {
+    listData.AveragePrice = 0;
+    listData.AverageOppervlak = 0;
     listData.Objects.map(function(object) {
       object.KoopprijsString = Utils.formatCurrency(object.Koopprijs, ` ${object.Prijs.KoopAbbreviation}`);
       object.KoopprijsTotString = Utils.formatCurrency(object.KoopprijsTot, ` ${object.Prijs.KoopAbbreviation}`);
       object.PublicatieDatumString = Utils.formatDate(object.PublicatieDatum, 'string');
       object.PublicatieDatum = Utils.formatDate(object.PublicatieDatum, 'date');
+      listData.AveragePrice = listData.AveragePrice + Number(object.Koopprijs);
+      listData.AverageOppervlak = listData.AverageOppervlak + Number(object.Woonoppervlakte);
     });
+    localStorage.setItem('average_price', Math.round(listData.AveragePrice / listData.Objects.length))
+    localStorage.setItem('oppervlakte', Math.round(listData.AverageOppervlak / listData.Objects.length))
     sortList(listData);
   };
 
