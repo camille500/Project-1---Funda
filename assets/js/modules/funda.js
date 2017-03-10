@@ -34,9 +34,9 @@ const Funda = (function() {
   ------------------------------------------------  */
   const sortList = (listData, type = '') => {
     listData.Objects = listData.Objects.sort(
-    firstBy(localStorage.getItem('filter1'), type)
-    .thenBy(localStorage.getItem('filter2'), type)
-    .thenBy(localStorage.getItem('filter3'), type)
+      firstBy(localStorage.getItem('filter1'), type)
+      .thenBy(localStorage.getItem('filter2'), type)
+      .thenBy(localStorage.getItem('filter3'), type)
     );
     localStorage.setItem('locationResult', JSON.stringify(listData));
     setListAttributes(listData);
@@ -49,6 +49,16 @@ const Funda = (function() {
     detailData.GewijzigdDatum = Utils.formatDate(detailData.GewijzigdDatum, 'string');
     detailData.KoopPrijs = Utils.formatCurrency(detailData.Koopprijs, ',-');
     detailData.PublicatieDatum = Utils.formatDate(detailData.PublicatieDatum, 'string');
+    for (let key in detailData) {
+      if (detailData[key] === null) {
+        detailData[key] = 'Onbekend';
+      } else if (detailData[key] === false) {
+        detailData[key] = 'Nee';
+      } else if (detailData[key] === true) {
+        detailData[key] = 'Ja';
+      }
+    }
+
     setDetailAttributes(detailData);
   };
 
@@ -73,16 +83,20 @@ const Funda = (function() {
   /* SET ALL DETAIL ATTRIBUTES SO THAT TRANSPARENCY CAN RENDER THEM
   ------------------------------------------------  */
   const setDetailAttributes = (cleanDetailData) => {
-    let attributes = { };
+    let attributes = {};
     const getAllImages = function() {
       cleanDetailData.Media.map(function(item, i) {
-        if(item.MediaItems[2]) {
+        if (item.MediaItems[2]) {
           setImageAttribute(item.MediaItems[2].Url, i);
         }
       });
     };
     const setImageAttribute = (item, index) => {
-      attributes[`photo${index}`] = { src: function() { return item } };
+      attributes[`photo${index}`] = {
+        src: function() {
+          return item
+        }
+      };
     };
     getAllImages();
     Sections.renderDetail(cleanDetailData, attributes)

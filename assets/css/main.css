@@ -292,7 +292,7 @@ label[for='mobileMenu'], nav input {
   border: none;
 }
 
-.filterSection  a {
+.filterSection a {
   padding: .6em 6em;
   border-radius: .2em;
   border: .2em solid transparent;
@@ -344,6 +344,10 @@ select:hover {
     font-size: 1.1em;
     color: white;
 }
+.sortOptions h2 {
+  display: inline-block;
+  margin-left: 7.5em;
+}
 .sortOptions > a:hover,
 .meerResultaten > a:hover {
   background-color: #025d91;
@@ -369,6 +373,12 @@ select:focus {
   position: relative;
 }
 
+.meta {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
 .images {
   display: flex;
@@ -403,8 +413,14 @@ select:focus {
   margin-bottom: 1.2em;
 }
 
-.KoopprijsString {
+.omschrijving {
+  flex-basis: 100%;
+  padding: 2em;
+}
 
+.omschrijving p {
+  max-width: 40em;
+  font-size: 1.2em;
 }
 
 h1 .Adres {
@@ -422,6 +438,10 @@ h1 .Adres {
   }
   h1.Adres {
     margin-left: .5em;
+  }
+  .sortOptions h2 {
+    margin-top: 2em;
+    margin-left: 1em;
   }
 }
 

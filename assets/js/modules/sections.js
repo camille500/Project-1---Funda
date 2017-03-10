@@ -11,8 +11,8 @@ const Sections = (function() {
   /* FUNCTIONALITY FOR RENDERING LISTS WITH DATA
   ------------------------------------------------  */
   const renderList = (listData, attributes) => {
+    elements.locatieData.innerHTML = listData.Metadata.Omschrijving;
     Transparency.render(elements.listSection, listData.Objects, attributes);
-    Transparency.render(elements.sortOptions, listData);
     elements.loader.classList.add('hidden');
   };
 
