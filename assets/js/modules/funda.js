@@ -3,11 +3,12 @@ const Funda = (function() {
 
   /* BUILD THE URL FOR THE API REQUEST TO FUNDA (LIST)
   ------------------------------------------------  */
-  const makeListUrl = () => {
+  const makeListUrl = (page = 1) => {
     let city = localStorage.getItem('city');
     let street = localStorage.getItem('street');
-    const locationString = `/${city}/${street}/+1km/`;
-    Requests.get(`${config.fundaListBaseUrl}type=koop&zo=${locationString}&page=1&pagesize=25`, 'list');
+    let distance = localStorage.getItem('filter4');
+    const locationString = `/${city}/${street}/${distance}/`;
+    Requests.get(`${config.fundaListBaseUrl}type=koop&zo=${locationString}&page=${page}&pagesize=24`, 'list');
   };
 
   /* BUILD THE URL FOR THE API REQUEST TO FUNDA (DETAIL)
@@ -25,9 +26,20 @@ const Funda = (function() {
       object.PublicatieDatumString = Utils.formatDate(object.PublicatieDatum, 'string');
       object.PublicatieDatum = Utils.formatDate(object.PublicatieDatum, 'date');
     });
+    sortList(listData);
+  };
+
+  /* SORT THE LIST DATA, BASED ON THE USERS INPUT
+  ------------------------------------------------  */
+  const sortList = (listData, type = '') => {
+    listData.Objects = listData.Objects.sort(
+    firstBy(localStorage.getItem('filter1'), type)
+    .thenBy(localStorage.getItem('filter2'), type)
+    .thenBy(localStorage.getItem('filter3'), type)
+    );
     localStorage.setItem('locationResult', JSON.stringify(listData));
     setListAttributes(listData);
-  };
+  }
 
   /* CLEAN THE DETAIL DATA
   ------------------------------------------------  */
@@ -60,9 +72,7 @@ const Funda = (function() {
   /* SET ALL DETAIL ATTRIBUTES SO THAT TRANSPARENCY CAN RENDER THEM
   ------------------------------------------------  */
   const setDetailAttributes = (cleanDetailData) => {
-
     let attributes = { };
-
     const getAllImages = function() {
       cleanDetailData.Media.map(function(item, i) {
         if(item.MediaItems[2]) {
@@ -70,17 +80,12 @@ const Funda = (function() {
         }
       });
     };
-
     const setImageAttribute = (item, index) => {
       attributes[`photo${index}`] = { src: function() { return item } };
     };
-
     getAllImages();
-
     Sections.renderDetail(cleanDetailData, attributes)
   };
-
-
 
   /* MAKES SURE THAT THE RETURNED FUNCTIONS CAN BE USED
   ------------------------------------------------  */
@@ -88,6 +93,7 @@ const Funda = (function() {
     makeListUrl: makeListUrl,
     makeDetailUrl: makeDetailUrl,
     cleanList: cleanList,
+    sortList: sortList,
     cleanDetail: cleanDetail,
     setListAttributes: setListAttributes,
     setDetailAttributes: setDetailAttributes

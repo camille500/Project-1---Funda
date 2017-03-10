@@ -25,14 +25,58 @@
         <ul>
             <li><a href="#overzicht">Overzicht</a></li>
             <li><a href="#favorieten">Favorieten</a></li>
-            <li><a href="#">Update locatie</a></li>
+            <li><a href="">Update locatie</a></li>
         </ul>
     </nav>
   </header>
 
     <main>
 
+      <section class="wrapper filterSection hidden">
+        <h2>Mijn prioriteiten</h2>
+        <select class="filter">
+          <span></span>
+          <option value="" disabled selected>Mijn eerste prioriteit</option>
+          <option value="Koopprijs">Hoogte koopprijs</option>
+          <option value="AantalKamers">Hoeveelheid kamers</option>
+          <option value="WoonOppervlakte">Woon oppervlakte in m&sup2;</option>
+          <option value="PublicatieDatum">Nieuwste woning aanbod</option>
+        </select>
+        <select class="filter">
+          <span></span>
+          <option value="" disabled selected>Mijn tweede prioriteit</option>
+          <option value="AantalKamers">Hoeveelheid kamers</option>
+          <option value="WoonOppervlakte">Woon oppervlakte in m&sup2;</option>
+          <option value="PublicatieDatum">Nieuwste woning aanbod</option>
+          <option value="Koopprijs">Hoogte koopprijs</option>
+        </select>
+        <select class="filter">
+          <span></span>
+          <option value="" disabled selected>Mijn derde prioriteit</option>
+          <option value="WoonOppervlakte">Woon oppervlakte in m&sup2;</option>
+          <option value="PublicatieDatum">Nieuwste woning aanbod</option>
+          <option value="Koopprijs">Hoogte koopprijs</option>
+          <option value="AantalKamers">Hoeveelheid kamers</option>
+        </select>
+        <h2>Maximale afstand</h2>
+        <select class="filter">
+          <span></span>
+          <option value="" disabled selected>Max. afstand van locatie</option>
+          <option value="">+0KM</option>
+          <option value="+1KM">+1KM</option>
+          <option value="+2KM">+2KM</option>
+          <option value="+5KM">+5KM</option>
+          <option value="+5KM">+10KM</option>
+        </select>
+        <a class="button" href="#saveFilters">Opslaan</a>
+      </section>
+
         <!-- LIST SECTION -->
+        <section class="wrapper sortOptions hidden">
+          <a href="#overzicht/aflopend">Aflopend</a>
+          <a href="#overzicht/oplopend">Oplopend</a>
+        </section>
+
         <section class="wrapper listSection hidden">
             <div>
                 <img class="mainImage" />
@@ -41,24 +85,29 @@
                     <p><span class="Postcode"></span> in <span class="Woonplaats"></span></p>
                     <p><span class="KoopprijsString"></span></p>
                     <p><span class="Woonoppervlakte"></span>m&sup2;</p>
+                    <p><span class="AantalKamers"></span></p>
                 </section>
             </div>
         </section>
 
         <!-- DETAIL SECTION -->
         <section class="wrapper detailSection hidden">
-          <span class="Adres"></span>
+          <h1><span class="Adres"></span> in <span class="Plaats"></span></h1>
           <section class="images">
-            <img class="photo0" />
-            <img class="photo1" />
-            <img class="photo3" />
-            <img class="photo4" />
-            <img class="photo5" />
+            <div>
+              <img class="photo0" />
+            </div>
+            <div>
+              <img class="photo1" />
+              <img class="photo3" />
+            </div>
+            <div>
+              <img class="photo4" />
+              <img class="photo5" />
+            </div>
           </section>
           <section class="meta">
-            <p>Adres: <span class="Adres"></span></p>
             <p>Postcode: <span class="Postcode"></span></p>
-            <p>Plaats: <span class="Plaats"></span></p>
             <p>Aangeboden sinds: <span class="AangebodenSinds"></span></p>
             <p>Aantal kamers: <span class="AantalKamers"></span></p>
             <p>Aantal badkamers: <span class="AantalBadkamers"></span></p>
@@ -84,29 +133,31 @@
             <p>Dak: <span class="SoortDak"></span></p>
             <p>Soort woning: <span class="SoortWoning"></span></p>
             <p>Voorzieningen: <span class="Voorzieningen"></span></p>
+            <p><span class="VolledigeOmschrijving"></span></p>
           </section>
         </section>
 
     </main>
 
     <footer>
-
+      <p>Project Funda - Camille Sébastien Niessen</p>
     </footer>
 
     <!-- Micro Libraries -->
     <script type="text/javascript" src="./assets/js/libraries/routie.js"></script>
+    <script type="text/javascript" src="./assets/js/libraries/thenBy.js"></script>
     <script type="text/javascript" src="./assets/js/libraries/transparency.js"></script>
 
     <!-- Configuration  -->
     <script type="text/javascript" src="./assets/js/config.js"></script>
 
     <!-- JavaScript Modules -->
+    <script type="text/javascript" src="./assets/js/modules/sections.js"></script>
     <script type="text/javascript" src="./assets/js/modules/routes.js"></script>
     <script type="text/javascript" src="./assets/js/modules/utils.js"></script>
     <script type="text/javascript" src="./assets/js/modules/location.js"></script>
     <script type="text/javascript" src="./assets/js/modules/requests.js"></script>
     <script type="text/javascript" src="./assets/js/modules/funda.js"></script>
-    <script type="text/javascript" src="./assets/js/modules/sections.js"></script>
 
     <!-- Main application -->
     <script type="text/javascript" src="./assets/js/app.js"></script>

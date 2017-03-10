@@ -7,6 +7,13 @@ const Routes = (function() {
     routie({
       '': () => {
         localStorage.removeItem('locationResult');
+        Sections.toggleSections(elements.filterSection);
+      },
+      'saveFilters': () => {
+        elements.filters.forEach(function(filter, i) {
+          localStorage.removeItem(`filter${i+1}`);
+          localStorage.setItem(`filter${i+1}`, filter.options[filter.selectedIndex].value); // Get selected option in select box
+        });
         window.location.hash = 'nieuwe-locatie';
       },
       'nieuwe-locatie': () => {
@@ -15,12 +22,16 @@ const Routes = (function() {
       },
       'overzicht': () => {
         Sections.toggleSections(elements.listSection);
+        elements.sortOptions.classList.remove('hidden');
         if(localStorage.getItem('locationResult')) {
           Funda.setListAttributes(JSON.parse(localStorage.getItem('locationResult')));
         }
       },
-      'favorieten': () => {
-
+      'overzicht/aflopend': () => {
+        Funda.sortList(JSON.parse(localStorage.getItem('locationResult')), '');
+      },
+      'overzicht/oplopend': () => {
+        Funda.sortList(JSON.parse(localStorage.getItem('locationResult')), -1);
       },
       'detail/:id': (id) => {
         Funda.makeDetailUrl(id);
